@@ -1,6 +1,8 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Button } from 'react-native';
+
 import { Link } from 'expo-router';
+import React from 'react';
+import { Button, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+  
 
 const Inicio: React.FC = () => {
   return (
@@ -28,10 +30,7 @@ const Inicio: React.FC = () => {
       <Text style={styles.sectionTitle}>Conexões (27)</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={styles.avatarContainer}>
-          <Image
-            source={{ uri: 'https://robohash.org/1' }}
-            style={styles.avatar}
-          />
+          
           <Image
             source={{ uri: 'https://robohash.org/Maria' }}
             style={styles.avatar}
@@ -52,25 +51,42 @@ const Inicio: React.FC = () => {
       </ScrollView>
 
       {/* Seção de Destaques */}
+      
       <Text style={styles.sectionTitle}>Seleção de hoje</Text>
       <Text style={styles.subTitle}>Uma seleção de destaques diários</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <Image
-          source={{ uri: 'https://via.placeholder.com/150' }}
-          style={styles.destaqueImage}
-        />
-        <Image
-          source={{ uri: 'https://via.placeholder.com/150' }}
-          style={styles.destaqueImage}
-        />
-        <Image
-          source={{ uri: 'https://via.placeholder.com/150' }}
-          style={styles.destaqueImage}
-        />
-      </ScrollView>
 
+      <view style={styles.linha}>
+          <Image
+            source={require("../../assets/images/naturalDisaster.png")}
+            style={{ width: 150, height: 150 }}
+          />
+          <text style={{fontFamily:"Cursive", marginRight:"50px"}}>
+            
+            Natural Disaster
+
+          </text>
+         
+          <Image style={styles.imagem2}
+            source={require("../../assets/images/Volleybal.png")}
+            
+          />
+          <text style={styles.textoVolley}>Volleyball Legends</text>
+      </view>
+      <text style={styles.destaque}>Destaques</text>
+        <Image
+          source={{ uri: 'https://via.placeholder.com/150' }}
+          style={styles.destaqueImage}
+        />
+        <Image
+          source={{ uri: 'https://via.placeholder.com/150' }}
+          style={styles.destaqueImage}
+        />
+        
+      </ScrollView>
+    
       {/* Nova seção de imagens entre a Seleção de hoje e a barra de navegação */}
-      <Text style={styles.sectionTitle}>Imagens adicionais</Text>
+      <Text style={styles.sectionTitle}></Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <Image
           source={{ uri: 'https://via.placeholder.com/150x100' }}
@@ -97,6 +113,26 @@ const Inicio: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
+  imagem2:{
+    justifyContent:"center",
+    marginTop:"18%",
+  },
+
+  textoVolley:{
+    
+  },
+  destaque:{
+    fontFamily:"cursive" ,
+    marginTop:"27%",
+    marginLeft:"-38%",
+    fontSize: 24,
+  
+  },
+
+  linha:{
+    flexDirection:"row",
+    marginBottom:"10%",
+  },
   container: {
     flex: 1,
     backgroundColor: 'white',
@@ -168,12 +204,12 @@ const styles = StyleSheet.create({
   },
   addText: {
     fontSize: 30,
-    color: '#007bff',
+    color: 'black',
   },
   destaqueImage: {
     width: 150,
     height: 100,
-    marginRight: 10,
+    
     borderRadius: 10,
   },
   additionalImage: {
@@ -194,7 +230,7 @@ const styles = StyleSheet.create({
   navLink: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#007bff',
+    color: 'black',
   },
 });
 
