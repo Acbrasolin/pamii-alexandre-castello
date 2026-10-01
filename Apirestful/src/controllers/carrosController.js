@@ -1,11 +1,17 @@
 ﻿const db = require('../config/db');
 const { validarCarro } = require('../validators/carrosValidator');
 
+/**
+ * Lista todos os carros cadastrados no banco de dados.
+ */
 async function listarCarros(req, res) {
   const [carros] = await db.query('SELECT * FROM carros');
   res.json(carros);
 }
 
+/**
+ * Busca um carro específico pelo ID informado nos parâmetros da rota.
+ */
 async function buscarCarro(req, res) {
   const id = req.params.id;
   const [linhas] = await db.query('SELECT * FROM carros WHERE id = ?', [id]);
@@ -17,6 +23,9 @@ async function buscarCarro(req, res) {
   res.json(linhas[0]);
 }
 
+/**
+ * Valida e cadastra um novo carro no banco de dados.
+ */
 async function criarCarro(req, res) {
   const erros = validarCarro(req.body);
   if (erros.length > 0) {
@@ -40,6 +49,9 @@ async function criarCarro(req, res) {
   });
 }
 
+/**
+ * Atualiza os dados de um carro existente com base no ID.
+ */
 async function atualizarCarro(req, res) {
   const id = req.params.id;
 
@@ -62,6 +74,9 @@ async function atualizarCarro(req, res) {
   res.json({ id, modelo, marca, categoria, ano, preco });
 }
 
+/**
+ * Remove um carro do banco de dados pelo ID.
+ */
 async function deletarCarro(req, res) {
   const id = req.params.id;
 
